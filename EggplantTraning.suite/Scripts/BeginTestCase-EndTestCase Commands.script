@@ -1,0 +1,69 @@
+﻿(*----------------------------------------------------------Basic Test Case for Login----------------------------------------------------------*)
+
+BeginTestCase "SubmitLogin"
+Login // Calls the Login script
+EndTestCase "SubmitLogin"
+
+(*----------------------------------------------------------Test Case with Actions----------------------------------------------------------*)
+
+Click "SearchButton"
+BeginTestCase "ResultsLoaded"
+WaitFor 20, "Results"
+EndTestCase "ResultsLoaded"
+set myResult to the result
+put myResult.testcase & comma & myResult.duration & comma & myResult.starttime & CRLF after file ResourcePath ("myTimings.csv")
+
+(*----------------------------------------------------------Multiple Test Cases with Overlapping----------------------------------------------------------*)
+
+BeginTestCase "A" // Marks the start of the reporting period for case A
+// Other commands here
+EndTestCase "A" // Ends the reporting period for case A and logs the information gathered
+
+BeginTestCase "B" // Starts recording information for case B
+// Other commands here
+
+BeginTestCase "C" // Starts recording information for case C
+// Other commands here
+
+EndTestCase "B" // Ends case B and reports information gathered since case B was opened
+// Other commands here
+
+// If the run ends with Test case C still open, it will be ended and reported automatically
+
+(*----------------------------------------------------------Recording Successes and Errors----------------------------------------------------------*)
+
+BeginTestCase "DataValidation"
+ValidateData() // Calls a custom function that performs data validation
+LogSuccess "Data validation successful"
+EndTestCase "DataValidation"
+
+(*----------------------------------------------------------Test Case Reporting and Duration Tracking----------------------------------------------------------*)
+
+BeginTestCase "NavigationTest"
+Click "MenuButton"
+WaitFor 5, "HomePage"
+EndTestCase "NavigationTest"
+
+(*----------------------------------------------------------Test Case with Command Line Execution----------------------------------------------------------*)
+
+if runningFromCommandLine() then
+	BeginTestCase "CommandLineTest"
+	PerformAutomatedTasks()
+	EndTestCase "CommandLineTest"
+end if
+
+(*----------------------------------------------------------Handling Test Cases Across Multiple Scripts----------------------------------------------------------*)
+
+BeginTestCase "ScriptStart"
+RunScript "LoginScript" // Runs a separate script as part of the test case
+EndTestCase "ScriptStart"
+
+BeginTestCase "MainFunctionality"
+PerformMainTasks() // Main tasks for testing core functionality
+EndTestCase "MainFunctionality"
+
+(*----------------------------------------------------------Reporting Errors in Test Cases----------------------------------------------------------*)
+
+BeginTestCase "ErrorTest"
+Click "NonExistentButton" // This will cause an error
+EndTestCase "ErrorTest"

@@ -1,0 +1,66 @@
+﻿// Step 1: Define a sentence
+put "The quick brown fox jumps over the lazy dog" into sentence
+
+// Step 2: Split the sentence into words using a space as the delimiter
+split sentence by " "
+
+// Step 3: Display the resulting list
+Log "Words in the sentence:" & sentence
+
+// Step 4: Access specific words
+Log "The third word is: " & item 3 of sentence
+
+(*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+
+// Step 1: Define a sentence
+put "Learning is fun with Eggplant" into sentence
+
+// Step 2: Use the split function to create a list of words
+put split(sentence, " ") into wordList
+
+// Step 3: Display the original sentence and the resulting list
+Log "Original Sentence: " & sentence
+Log "Words in the List:" & wordList
+
+// Step 4: Access specific words
+Log "The second word is: " & item 2 of wordList
+
+(*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+
+// Step 1: Define a string of key-value pairs
+put "name=John;age=30;city=Hyderabad" into data
+
+// Step 2: Split the string into a property list using ";" and "="
+split data by ";" and "="
+
+// Step 3: Display the resulting property list
+Log "Parsed Data:" & data
+
+// Step 4: Access specific keys and their values
+Log "Name: " & data.name
+Log "Age: " & data."age"
+Log "City: " & data's city
+
+(*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+
+// Step 1: Define a string of key-value pairs
+put "fruit=apple;quantity=10;color=red" into data
+
+// Step 2: Use the split function to parse into a property list
+put split(data, ";", "=") into properties
+
+// Step 3: Display the original string and the property list
+Log "Original Data: " & data
+Log "Parsed Property List:" & properties
+
+// Step 4: Access specific keys and their values
+Log "Fruit: " & properties.fruit
+Log "Quantity: " & properties."quantity"
+Log "Color: " & properties's "color"
+
+
+
+
+
+
+

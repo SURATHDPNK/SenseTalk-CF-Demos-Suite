@@ -1,0 +1,79 @@
+﻿(*-----------------------------------------Basic Counter Usage-----------------------------------------*)
+
+repeat 5 times
+	log "Current iteration: " & counter()
+end repeat
+
+(*-----------------------------------------Exiting a Loop Based on Counter-----------------------------------------*)
+
+repeat until ImageFound(ImageName:"SearchButton", waitFor:0)
+	if counter() = 5 then
+		throw "Image Not Found", "SearchButton not found after 5 attempts."
+	end if
+	SwipeUp
+	wait 2
+end repeat
+
+(*-----------------------------------------Nested Loops with Counter-----------------------------------------*)
+
+repeat 3 times
+	log "Outer loop iteration: " & counter()
+	repeat 4 times
+		log "  Inner loop iteration: " & counter()
+	end repeat
+end repeat
+
+(*-----------------------------------------Using Counter to Perform Conditional Actions-----------------------------------------*)
+
+repeat 10 times
+	if counter() mod 2 = 0 then
+		log "Even iteration: " & counter()
+	else
+		log "Odd iteration: " & counter()
+	end if
+end repeat
+
+(*-----------------------------------------Using Counter to Track Scrolling-----------------------------------------*)
+
+repeat 8 times
+	log "Scroll iteration: " & the counter
+	SwipeDown
+	wait 1
+end repeat
+
+(*-----------------------------------------Counter in Each Item Loops-----------------------------------------*)
+
+set Colors to {"Red", "Green", "Blue"}
+repeat with each item of Colors
+	log the counter & ": " & it
+end repeat
+
+(*-----------------------------------------Breaking a Loop at a Specific Counter Value-----------------------------------------*)
+
+repeat 10 times
+	if counter() = 7 then
+		log "Breaking at iteration: " & the counter
+		exit repeat
+	end if
+end repeat
+
+(*-----------------------------------------Tracking Counter in Character Iteration-----------------------------------------*)
+
+put each char of "12345" & counter() -- Output: [1, 1, 2, 2, 3, 3, 4, 4, 5, 5]
+
+(*-----------------------------------------Using Counter to Define Custom Limits-----------------------------------------*)
+
+repeat 15 times
+	if counter() > 10 then
+		log "Iteration exceeds 10: " & counter()
+	else
+		log "Iteration within 10: " & counter()
+	end if
+end repeat
+
+(*-----------------------------------------Tracking Pixel Coordinates in Image Analysis-----------------------------------------*)
+
+repeat 3 times
+	put the counter into XCoord
+	log "Analyzing pixel at X coordinate: " & XCoord
+end repeat

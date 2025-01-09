@@ -1,0 +1,78 @@
+﻿(*---------------------------------------------Iterating with RepeatIndex--------------------------------------------*)
+
+repeat 5 times
+	log "Iteration number: " & repeatIndex()
+end repeat
+
+(*--------------------------------------------Exiting a Loop After Specific Iteration--------------------------------------------*)
+
+repeat until imagefound(imagename:"NextButton", waitFor:0)
+	if repeatIndex() = 5 then
+		throw "Image Not Found", "Image not found after 5 attempts."
+	end if
+	SwipeUp
+	wait 2
+end repeat
+
+(*--------------------------------------------Nested Loops with RepeatIndex--------------------------------------------*)
+
+repeat 3 times
+	log "Outer loop, iteration: " & repeatIndex()
+	repeat 4 times
+		log "  Inner loop, iteration: " & repeatIndex()
+	end repeat
+end repeat
+
+(*--------------------------------------------Custom Actions Based on RepeatIndex--------------------------------------------*)
+
+repeat 10 times
+	if repeatIndex() mod 2 = 0 then
+		log "Even iteration: " & repeatIndex()
+	else
+		log "Odd iteration: " & repeatIndex()
+	end if
+end repeat
+
+(*--------------------------------------------Using RepeatIndex in a Scroll Action--------------------------------------------*)
+
+repeat 8 times
+	log "Scrolling iteration: " & the repeatIndex
+	SwipeDown
+	wait 1
+end repeat
+
+(*--------------------------------------------Associating RepeatIndex with Items--------------------------------------------*)
+
+set Fruits to {"Apple", "Banana", "Cherry"}
+repeat with each item of Fruits
+	log the repeatIndex & ": " & it
+end repeat
+
+(*--------------------------------------------Looping Over a Range of Numbers--------------------------------------------*)
+
+repeat with i = 1 to 10
+	log "RepeatIndex inside range: " & the repeatIndex & ", Current number: " & i
+end repeat
+
+(*--------------------------------------------Breaking a Loop Based on RepeatIndex--------------------------------------------*)
+
+repeat 10 times
+	if repeatIndex() = 7 then
+		log "Breaking at iteration: " & repeatIndex()
+		exit repeat
+	end if
+end repeat
+
+(*--------------------------------------------Tracking Iterations in String Characters--------------------------------------------*)
+
+put each char of "abcdefg" & repeatIndex()  -- Output: [a1, b2, c3, d4, e5, f6, g7]
+
+(*--------------------------------------------Using RepeatIndex with a Condition--------------------------------------------*)
+
+repeat 15 times
+	if repeatIndex() > 10 then
+		log "Iteration is greater than 10: " & repeatIndex()
+	else
+		log "Iteration is 10 or less: " & repeatIndex()
+	end if
+end repeat

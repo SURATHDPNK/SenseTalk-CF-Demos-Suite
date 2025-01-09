@@ -1,0 +1,27 @@
+﻿(*-----------------------------------------------------Storing the Location of an OCR Text--------------------------------------------------------------------*)
+
+set SectionHeaderLocation to ImageLocation(text:"Billing Address") // Find the location of the "Billing Address" text on the screen
+Log SectionHeaderLocation // Log the coordinates of the "Billing Address" text
+
+(*-----------------------------------------------------Clicking Relative to an Image's Location--------------------------------------------------------------------*)
+
+click ImageLocation("NameLabel") + [50,-10]  // Find the location of the "NameLabel" image and click 50 pixels to the right and 10 pixels up from it
+
+(*-----------------------------------------------------Using ImageLocation with SearchRectangle for Precision-------------------------------------------------------------------*)
+
+tap {ImageName:"OKButton", searchRectangle:["PopupHeader", ImageLocation("LowerRightAnchor") - [400,500]]}  // Tap the "OKButton" within a specific region defined by the searchRectangle
+
+(*------------------------------------------------Clicking a Button Multiple Times Using a Stored Location------------------------------------------------------------------*)
+
+set ScrollDownButtonLocation to ImageLocation("ScrollDownButton")   // Store the location of the "ScrollDownButton" image
+repeat 10 times   // Click the "ScrollDownButton" 10 times
+	click ScrollDownButtonLocation
+end repeat
+
+(*------------------------------------------------Handling Exceptions when Image is Not Found------------------------------------------------------------------*)
+
+try  // Attempt to find an image and handle the exception if not found
+	set ButtonLocation to ImageLocation("SubmitButton")
+catch e
+	Log "SubmitButton not found"
+end try

@@ -1,0 +1,129 @@
+﻿(*----------------------------------------------------------Static Area Definition----------------------------------------------------------*)
+
+setoption SearchRectangle, ("DialogUpperLeft", imageLocation("DialogLowerRight") + (50,10))
+
+(*----------------------------------------------------------Detecting Flashing Elements----------------------------------------------------------*)
+
+Set the SearchRectangle to ("TopLeftFieldBorder", "BottomRightFieldBorder")
+Set the imageSearchDelay to 0.1
+repeat 2 times
+	WaitFor 1, "GreyElement"
+	WaitFor 1, "RedElement"
+end repeat
+Set the SearchRectangle to empty
+
+(*----------------------------------------------------------Reusable Screen Parts----------------------------------------------------------*)
+
+function ScreenPart Portion  //Define reusable screen sections with a custom function handler
+	set screenPortions to {
+		TopHalf: ((0,0),(1,.5)),
+		BottomHalf: ((0,.5),(1,1)),
+		LeftHalf: ((0,0),(.5,1)),
+		RightHalf: ((.5,0),(1,1)),
+		Center:((.25,.25),(.75,.75))
+	}
+	set multiplier to screenPortions.(Portion)
+	if multiplier is empty then
+		throw "Parameter error", Portion && "is not a recognized screen portion."
+	end if
+	return (the remoteScreenSize,the remotescreenSize) * multiplier
+end ScreenPart
+
+Set the SearchRectangle to ScreenPart("LeftHalf") //Calling the Function
+
+(*----------------------------------------------------------On-the-Fly Search----------------------------------------------------------*)
+
+Click (image:"WelcomeMessage", searchRectangle:ScreenPart("TopHalf"), waitFor:10)
+
+(*----------------------------------------------------------Dynamic SearchRectangle Based on Multiple Images----------------------------------------------------------*)
+
+Put imageLocation("TopLeftIcon") into TopLeft
+Put imageLocation("BottomRightIcon") into BottomRight
+Set the SearchRectangle to (TopLeft, BottomRight)
+Click "TargetElement" // Searches only within the defined rectangle
+Set the SearchRectangle to empty // Reset to full screen
+
+(*----------------------------------------------------------Using Adjustments for Precise SearchRectangle----------------------------------------------------------*)
+
+Put imageLocation("UpperLeft") into UL
+Set the SearchRectangle to (UL, UL + (300, 200)) // Sets a 300x200 rectangle starting from UL
+Click "OkButton"
+Set the SearchRectangle to empty
+
+(*----------------------------------------------------------Narrowing Search Area for OCR Detection----------------------------------------------------------*)
+
+Set the SearchRectangle to ("TLImage", "BRImage")
+Log ReadText() // Reads text within the defined rectangle
+Set the SearchRectangle to empty
+
+(*----------------------------------------------------------Dynamic SearchRectangle for Dropdown Scrolling----------------------------------------------------------*)
+
+Set the SearchRectangle to ("DropdownTop", "DropdownBottom")
+Repeat until imageFound("TargetItem")
+	Click "ScrollDownButton"
+End repeat
+Click "TargetItem"
+Set the SearchRectangle to empty
+
+(*----------------------------------------------------------SearchRectangle Based on Active Window----------------------------------------------------------*)
+
+Put imageLocation("WindowTopLeft") into TopLeft
+Put imageLocation("WindowBottomRight") into BottomRight
+Set the SearchRectangle to (TopLeft, BottomRight)
+Click "CloseButton"
+Set the SearchRectangle to empty
+
+(*----------------------------------------------------------Detecting Transient States with Dynamic SearchRectangle----------------------------------------------------------*)
+
+Put imageLocation("DialogTopLeft") into UL
+Put imageLocation("DialogBottomRight") into LR
+Set the SearchRectangle to (UL, LR)
+Repeat 5 times
+	WaitFor 0.5, "FlashingIcon1"
+	WaitFor 0.5, "FlashingIcon2"
+End repeat
+Set the SearchRectangle to empty
+
+(*----------------------------------------------------------Using the ScreenPart Function----------------------------------------------------------*)
+
+Set the SearchRectangle to ScreenPart("Center") // Search only in the center of the screen
+Click "TargetButton"
+Set the SearchRectangle to empty
+
+(*----------------------------------------------------------Sequential Dynamic SearchRectangles----------------------------------------------------------*)
+
+Put imageLocation("FormTopLeft") into FormUL
+Put imageLocation("FormBottomRight") into FormLR
+Set the SearchRectangle to (FormUL, FormLR)
+Click "SubmitButton"
+
+Put imageLocation("DialogTopLeft") into DialogUL
+Put imageLocation("DialogBottomRight") into DialogLR
+Set the SearchRectangle to (DialogUL, DialogLR)
+Click "ConfirmButton"
+
+Set the SearchRectangle to empty
+
+(*----------------------------------------------------------Checking Multiple SearchRectangles Dynamically----------------------------------------------------------*)
+
+Set Rectangles to [(("TopLeft", "BottomRight1")), (("TopLeft2", "BottomRight2"))]
+Repeat for each Rectangle in Rectangles
+	Set the SearchRectangle to Rectangle
+	If imageFound("TargetElement")
+		Click "TargetElement"
+		Exit repeat
+	End if
+End repeat
+Set the SearchRectangle to empty
+
+(*----------------------------------------------------------Dynamic SearchRectangle in a Helper Script----------------------------------------------------------*)
+
+function DefineSearchRectangle(TLImage, BRImage)
+	Put imageLocation(TLImage) into TopLeft
+	Put imageLocation(BRImage) into BottomRight
+	return (TopLeft, BottomRight)
+end DefineSearchRectangle
+
+Set the SearchRectangle to RectangleHandler's DefineSearchRectangle("TopIcon", "BottomIcon")
+Click "ConfirmButton"
+Set the SearchRectangle to empty

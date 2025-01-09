@@ -1,0 +1,30 @@
+﻿(*--------------------------------------------------------Finding All Instances of an Image-----------------------------------------------------------------------------------------*)
+
+put EveryImageLocation("RadioButton") into RadioButtonLocations // Search for all instances of the "RadioButton" image on the screen
+log RadioButtonLocations // Log the coordinates of all instances of the image
+
+(*--------------------------------------------------------Clicking the First Occurrence of an Image-----------------------------------------------------------------------------------------*)
+
+put EveryImageLocation("SaveButton") into SaveButtonLocations // Find all locations of the "SaveButton" image
+click item 1 of SaveButtonLocations  // Click the first occurrence of the image
+
+(*--------------------------------------------------------Click the Penultimate Occurrence of Text (OCR)-----------------------------------------------------------------------------------------*)
+
+repeat with EveryImageLocation(text:"AddressField")  // Find all instances of the text "AddressField" using OCR
+	click item (count of EveryImageLocation(text:"AddressField") - 1) of EveryImageLocation(text:"AddressField")  // Click the penultimate occurrence (second to last)
+end repeat
+
+(*--------------------------------------------------------Interacting with Multiple Images-----------------------------------------------------------------------------------------*)
+
+put EveryImageLocation("GreenSaveButton", "BlueSaveButton", "RedSaveButton") into ButtonLocations  // Find all locations of "GreenSaveButton", "BlueSaveButton", and "RedSaveButton" images
+log ButtonLocations  // Log the results (coordinates of all button instances)
+
+(*--------------------------------------------------------Using Multiple Properties with EveryImageLocation-----------------------------------------------------------------------------------------*)
+
+log EveryImageLocation(ImageName:"CheckBoxes", scale:[1, .5])  // Find all instances of "CheckBoxes" image at original size and half scale
+
+(*--------------------------------------------------------Iterating Through Each Image Instance-----------------------------------------------------------------------------------------*)
+
+repeat with each item of EveryImageLocation("RadioButton")  // Search for all instances of the "RadioButton" image
+	click it  	// Click each occurrence of the image
+end repeat

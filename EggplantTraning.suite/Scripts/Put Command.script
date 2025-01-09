@@ -1,0 +1,33 @@
+﻿put  // Outputs a blank line.
+put "hello world"  // Outputs: hello world
+put "hello", "world"  // Outputs:  //hello  //world
+put 3+5  // Outputs: 8
+
+(*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+
+put -  // Outputs a line of 33 "-" characters.
+put 66 -  // Outputs a line of 66 "-" characters.
+put ?  // Outputs a line of 33 "?" characters.
+
+(*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+
+put 5 into count  // count = 5
+put "Bob" into firstName  // firstName = "Bob"
+put "Alice" into firstName  // Replaces "Bob" with "Alice"
+Log firstName // Outputs the current value of firstName
+
+(*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+
+put 123 into holder  // holder = "123"
+put "X" before holder  // holder = "X123"
+put "Y" after holder  // holder = "X123Y"
+put holder  // Outputs the current value of holder
+
+(*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+
+(*
+Key Differences Between put and set:
+Put: Flexible and natural for SenseTalk scripting.
+Set: Familiar syntax for developers used to traditional programming languages.
+The put command's natural style makes it an excellent choice for beginners, while its advanced options ensure that even experienced developers find it powerful and convenient.
+*)

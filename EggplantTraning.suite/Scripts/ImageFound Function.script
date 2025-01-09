@@ -1,0 +1,43 @@
+﻿(*-------------------------------------------------Simple Conditional Check---------------------------------------------------*)
+
+if ImageFound(ImageName:"OKButton") then
+	// Perform an action if the image is found
+	click FoundImageLocation()
+else
+	// Perform a different action if the image is not found
+	LogError "OKButton not found on the screen."
+end if
+
+(*---------------------------------------------------Scrolling Until an Image is Found---------------------------------------------------*)
+
+repeat until ImageFound(ImageName:"NextButton", waitfor:5)
+	TypeText PageDown // Scroll down the page.
+	Wait 2 // Pause to allow the application to stabilize.
+	if the repeatindex is greater than 5 then
+		throw "Image Not Found", "NextButton not found after scrolling."
+	end if
+end repeat
+
+(*---------------------------------------------------Checking for Multiple Images---------------------------------------------------*)
+
+if ImageFound("Image1","Image2","Image3") then
+	log "At least one image is present."
+else
+	log "No images were found."
+end if
+
+(*---------------------------------------------------Immediate Search with Zero Wait---------------------------------------------------*)
+
+if ImageFound(ImageName:"CancelButton", waitfor:0) then
+	log "CancelButton is present on the screen."
+else
+	log "CancelButton is not present."
+end if
+
+(*---------------------------------------------------Combining ImageFound with FoundImageLocation---------------------------------------------------*)
+
+if ImageFound(ImageName:"SaveButton") then
+	Click FoundImageLocation() // Click the location of the found image.
+else
+	LogError "Save Button not found"
+end if

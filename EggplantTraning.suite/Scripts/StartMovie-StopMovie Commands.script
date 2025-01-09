@@ -1,0 +1,72 @@
+﻿(*---------------------------------------------------Basic Recording---------------------------------------------------*)
+
+StartMovie "C:\Users\YourUsername\Documents\HighlightedMovie"
+// Actions to be recorded
+Click "LoginButton"
+TypeText "username"
+TypeText Tab
+TypeText "password"
+Click "SubmitButton"
+StopMovie
+
+(*---------------------------------------------------Recording with Frame Rate and Extra Time---------------------------------------------------*)
+
+StartMovie "C:\Users\YourUsername\Documents\BugReportMovie", framesPerSecond:5, extraTime:10
+// Simulate a user interaction
+Click "MenuButton"
+TypeText "SearchQuery"
+Click "SearchButton"
+StopMovie
+
+(*---------------------------------------------------Highlighting Image Searches---------------------------------------------------*)
+
+StartMovie "C:\Users\YourUsername\Documents\HighlightedMovie", imageHighlighting:Yes
+Click "ProfileIcon"
+Click "SettingsButton"
+StopMovie
+
+(*---------------------------------------------------Compressing the Video---------------------------------------------------*)
+
+StartMovie "C:\Users\YourUsername\Documents\CompressedMovie", compressionRate:0.5
+Click "HelpMenu"
+Click "ContactSupport"
+StopMovie
+
+(*---------------------------------------------------Recording From Command Line Execution---------------------------------------------------*)
+
+if runningFromCommandLine() then
+	StartMovie "C:\Users\YourUsername\Documents\CommandLineMovie"
+	LoginToApplication()
+	PerformCriticalActions()
+	StopMovie
+end if
+
+(*---------------------------------------------------Restart Recording After SUT Change---------------------------------------------------*)
+
+StartMovie "/User/Documents/FirstSUTMovie"
+// Actions on the first SUT
+Click "LoginButton"
+StopMovie
+
+ChangeConnection "SecondSUT"
+StartMovie "/User/Documents/SecondSUTMovie"
+// Actions on the second SUT
+Click "StartProcessButton"
+StopMovie
+
+(*---------------------------------------------------Controlling Frame Rate to Save Space---------------------------------------------------*)
+
+StartMovie "/User/Documents/LowFrameRateMovie", framesPerSecond:3
+// Perform actions
+SwipeUp
+Click "NextPageButton"
+StopMovie
+
+(*---------------------------------------------------Capturing Bug Reproduction Steps---------------------------------------------------*)
+
+StartMovie "/User/Documents/BugReproductionMovie", framesPerSecond:8, extraTime:5
+Click "AddItemButton"
+TypeText "NewItemName"
+Click "SaveButton"
+StopMovie
+

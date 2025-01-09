@@ -1,0 +1,30 @@
+﻿// Step 1: Define a list of words
+put {"Learning", "is", "fun", "with", "Eggplant"} into words
+
+// Step 2: Use the join command to create a sentence
+put words joined by " " into sentence
+
+// Step 3: Display the resulting sentence
+Log "Joined Sentence: " & sentence
+
+(*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+
+// Step 1: Define a list of numbers
+put {10, 20, 30, 40} into numbers
+
+// Step 2: Use the join command to create a comma-separated string
+put numbers joined by "," into numberString
+
+// Step 3: Display the resulting string
+Log "Joined Numbers: " & numberString
+
+(*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+
+// Step 1: Define a list of fruit names
+put {"apple", "banana", "cherry", "date"} into fruits
+
+// Step 2: Use the join function to create a formatted string
+put join(fruits, ", ") into formattedString
+
+// Step 3: Display the formatted string
+Log "Fruit List: " & formattedString
