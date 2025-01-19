@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<statistics>
+ <script name="CaptureScreen Command">
+  <LastStatus>Success</LastStatus>
+  <NumberOfRuns>1</NumberOfRuns>
+  <NumberOfFails>0</NumberOfFails>
+  <FirstRun>2025-01-18 16:44:22 +0530</FirstRun>
+  <LastRun>2025-01-18 16:44:22 +0530</LastRun>
+  <TotalTimeOnSuccess>0.590000</TotalTimeOnSuccess>
+ </script>
+ <script name="Sample_POST_method-API">
+  <LastStatus>Success</LastStatus>
+  <NumberOfRuns>1</NumberOfRuns>
+  <NumberOfFails>0</NumberOfFails>
+  <FirstRun>2025-01-19 11:47:27 +0530</FirstRun>
+  <LastRun>2025-01-19 11:47:27 +0530</LastRun>
+  <TotalTimeOnSuccess>0.754000</TotalTimeOnSuccess>
+ </script>
+ <script name="RemoteClipboard function">
+  <LastStatus>Success</LastStatus>
+  <NumberOfRuns>7</NumberOfRuns>
+  <NumberOfFails>0</NumberOfFails>
+  <FirstRun>2025-01-18 17:27:02 +0530</FirstRun>
+  <LastRun>2025-01-19 11:40:57 +0530</LastRun>
+  <TotalTimeOnSuccess>13.118000</TotalTimeOnSuccess>
+ </script>
+ <script name="Open_nopcommerce">
+  <LastStatus>Failure</LastStatus>
+  <NumberOfRuns>4</NumberOfRuns>
+  <NumberOfFails>4</NumberOfFails>
+  <FirstRun>2025-01-13 23:11:12 +0530</FirstRun>
+  <LastRun>2025-01-15 20:20:27 +0530</LastRun>
+  <TotalTimeOnSuccess>0.000000</TotalTimeOnSuccess>
+ </script>
+ <script name="Sample_GET_method-API">
+  <LastStatus>Success</LastStatus>
+  <NumberOfRuns>1</NumberOfRuns>
+  <NumberOfFails>0</NumberOfFails>
+  <FirstRun>2025-01-19 11:46:15 +0530</FirstRun>
+  <LastRun>2025-01-19 11:46:15 +0530</LastRun>
+  <TotalTimeOnSuccess>0.484000</TotalTimeOnSuccess>
+ </script>
+ <script name="API from scripts">
+  <LastStatus>Success</LastStatus>
+  <NumberOfRuns>3</NumberOfRuns>
+  <NumberOfFails>0</NumberOfFails>
+  <FirstRun>2025-01-19 12:05:03 +0530</FirstRun>
+  <LastRun>2025-01-19 12:06:09 +0530</LastRun>
+  <TotalTimeOnSuccess>2.657000</TotalTimeOnSuccess>
+ </script>
+</statistics>

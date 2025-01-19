@@ -1,0 +1,17 @@
+﻿
+
+//POST method
+put {
+	"email": "eve.holt@reqres.in",
+	"password": "pistol"
+} into credentials
+
+post URLEncode(credentials) to url "https://reqres.in/api/register"
+
+log it
+
+//GET method
+
+get url "https://reqres.in/api/users?page=2"
+
+log it

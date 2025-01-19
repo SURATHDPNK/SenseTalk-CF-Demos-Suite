@@ -1,0 +1,21 @@
+﻿
+
+
+run "Open_nopcommerce"
+
+//The basic Log command lets you add a comment to the script log, which can be useful for marking sections of code in longer scripts in case you need to review the log for debugging later
+waitfor 10, text:"Welcome"
+log "The application is opened"
+
+
+// This command is useful for noting conditions that you want to watch but that aren't enough to cause a script failure.
+logwarning "No items has been selected in cart"
+
+
+//Any errors at the end of the script run cause the script to fail, so use LogError to track conditions where you want the script run to count as a failure
+logerror "The username has been in use"
+
+
+
+
+

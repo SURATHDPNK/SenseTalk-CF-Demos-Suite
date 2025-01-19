@@ -1,0 +1,15 @@
+﻿
+
+//It is a function that returns the value copied in the SUT
+
+--step1: set your remoteclipbord location
+set the RemoteClipboard to "PRODUCT STORE"
+--step2: print the copied information 
+log RemoteClipboard()
+
+
+//set a search rectangle and print it
+set the SearchRectangle to [687,549,939,876]
+set the remoteclipboard to "$360"
+typetext controlKey, "c"
+log RemoteClipboard()

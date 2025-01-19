@@ -1,0 +1,34 @@
+﻿
+
+(*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+//Sending sequential parameters
+
+to Launchapp browser, URL
+	TypeText windowsKey, "r" --opening run window
+	typetext browser&&URL , return -- typing brower and location
+end Launchapp
+
+Launchapp "chrome","https:\\demoblaze.com"  -- The sequentially passed parameters are received in order and inserted into their corresponding parameter variables
+
+
+(*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+//Receiving named parameters
+--This example shows how a single property list is passed followed by by name, so that the value of each key is inserted into the corresponding property variable in the declaration line of the handle.
+
+Launchapp {URL:"https:\\demoblaze.com",browser:"Chrome"} by name
+
+(*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+//default parameters 
+--while declaring the handler, by default values can be assigned to parameter
+
+to PrintNumbers startingNumber , limit:10
+	repeat while limit is not equal to 0
+		log startingNumber
+		add 1 to startingNumber
+		subtract 1 from limit
+	end repeat
+end PrintNumbers
+
+PrintNumbers 10 -- for the variable limit, the default value 10 is consider
+PrintNumbers 10,20 -- the variable limit will have 20 
+

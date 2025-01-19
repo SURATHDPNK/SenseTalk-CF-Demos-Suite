@@ -1,0 +1,48 @@
+{
+	"originalcapturelocation": [
+		352,
+		170,
+		246,
+		46
+	],
+	"lastmodifieddate": 1736952718.654,
+	"createddate": 1736952718.654,
+	"name": "NopCommerce_logo",
+	"lastfounddate": 1736952775.8080001,
+	"ocrcapturestring": "nopCommerce",
+	"lastfoundlocation": [
+		352,
+		170,
+		246,
+		46
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 52979,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[123,23]",
+					"Tolerance": "_65",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"sutinfo": {
+					"type": "Unknown VNC"
+				},
+				"name": "NopCommerce_logo.png",
+				"connectionname": "Mymachine",
+				"type": 1,
+				"connectionserverid": "127.0.0.1",
+				"capturerect": [
+					352,
+					170,
+					246,
+					46
+				],
+				"connectiontype": "Single System",
+				"capturedocrtext": "nopCommerce"
+			}
+	]
+}

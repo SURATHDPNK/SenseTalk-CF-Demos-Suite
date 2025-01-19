@@ -1,0 +1,47 @@
+﻿
+
+typetext windowsKey,"r"
+typetext "Notepad",return
+
+
+//Repeat number of times for a duration
+--This form repeats the number of times specified by the expression number or for the amount of time specified by the duration.
+repeat 5 times
+	typetext "Eggplant Functional",return
+end repeat
+
+repeat 2 seconds --will repeat until 2 seconds
+	typetext "Testing",return
+end repeat
+
+
+//Repeat until time and condition
+set Number to [1,2,3,4,5]
+repeat until Number is empty --repeats until the list is empty (condition based)
+	put the first item of Number
+	delete the first item of Number
+end repeat
+
+repeat until "14:53 pm" // Repeats until the local system (eggPlant machine) clock hits 3:17 pm"
+	log "counting the seconds"
+	wait 1
+end repeat
+
+
+//repeat while -  This form of repeat loop will execute as long as the condition expression evaluates to a value of true. The condition is evaluated before the first and each subsequent execution of the loop
+set number to 100
+repeat while number is greater than 10
+	set number to number-15
+end repeat
+log number
+
+
+//repeat with each item - The repeat with each form is perhaps the most powerful and useful of all of SenseTalk's repeat loops.
+run "Open_nopcommerce"
+repeat with each item of EveryImageLocation(text:"NopCommerce") -- iterares through each location of the text found
+	log FoundImageLocation()
+end repeat
+
+
+
+

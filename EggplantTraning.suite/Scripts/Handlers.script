@@ -1,0 +1,48 @@
+﻿
+
+#There are theree different types of handlers. Command Functional and generic handlers.
+
+(*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+//1. Command handlers
+
+--The keyword "on" is used to decalre the command handler with and "end" keyword ends it with handler name.
+
+on clickLogin
+	click text:"Log in"
+	waitfor 5, text:"Please Sign in!"
+end clickLogin
+
+clickLogin  --this is calling the handler
+
+(*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+//2.Generic handlers
+
+--the keyword "to" or "to handle" is used to declare the genreic handler and "end" keyword ends it with handler name.
+
+to handle selectDigitalDownloads
+	click text:"Digital downloads"
+	wait 2
+	ScrollWheelDown 2 --using the command to scroll down
+	set  Itemlocation to ImageLocation(text:"Night Vision")
+	put Itemlocation+[0,130] into addcartLoc -- using Night vision location as a reference to click on add to cart
+	click addcartLoc
+	log "Item 'Night Vision' digital download has been added to the cart"
+end selectDigitalDownloads
+
+(*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+//3.Functions
+
+--the keyword 'function' is used to declare funtions and "end" keyword ends with handler name.
+
+log TotalItems()
+
+Function TotalItems
+	set Groceries_list to ["dry chilles","ground nuts","oil"]
+	put number of items in Groceries_list into global count
+	return global count
+End TotalItems
+
+
+
+
+

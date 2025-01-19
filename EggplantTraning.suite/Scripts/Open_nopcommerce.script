@@ -1,0 +1,3 @@
+﻿TypeText windowsKey, "r"
+TypeText "Chrome https:\\demo.nopcommerce.com",return
+waitfor 10, imageName:"Nopcommerce_logo"

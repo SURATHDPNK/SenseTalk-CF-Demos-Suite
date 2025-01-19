@@ -1,0 +1,17 @@
+﻿
+
+//Capture the entire SUT screen or the a search rectngle indiccated.
+
+CaptureScreen --Captures the entire screen
+
+CaptureScreen {Name: "C:\Users\sudheeksha.gunuputi\OneDrive - Ideabytes\Documents\Documents\Eggplant\sample", Rectangle: [178,288,1680,960]} --Captures the area of the given rectangle and store t in the given location.
+
+
+//For example: can be used for validation of the screen before and after entering credentials
+Click text:"Log in"
+CaptureScreen {Name: "BeforeCredntials"}
+Click text:"Username", hotspot:[0,60]
+typetext "Eggplant"
+click text:"Password",hotspot:[0,60]
+typetext "1234567"
+CaptureScreen {Name: "AfterCredntials"}

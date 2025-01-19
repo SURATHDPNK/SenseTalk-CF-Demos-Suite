@@ -1,0 +1,15 @@
+﻿
+run "Open_nopcommerce"
+
+//"wait" is also call hard wait which waits for the given specific time. we can given seconds, minutes and hours.
+
+wait 2 -- waits for 2 seconds
+wait 2 minutes --waits for 2 minutes
+wait 2.5 -- wait 2.5 seconds.
+
+
+//"waitfor" is also called as soft wait, Halts the next line of script execution until the image or text (OCR) is found on the SUT. If no image or text (OCR) is found within the specified wait time, an exception is thrown
+click text:"Apparel"
+waitfor 5, text:"Shoes" --waits upto 5 seconds until the text was found.
+click text:"shoes"
+waitfor 2 , {text:"Display",SearchRectangle:[641,556,1153,620]} --waits upto 2 seconds until the text was found in the given searchreactangle.
