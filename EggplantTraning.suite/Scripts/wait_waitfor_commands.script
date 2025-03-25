@@ -13,3 +13,10 @@ click text:"Apparel"
 waitfor 5, text:"Shoes" --waits upto 5 seconds until the text was found.
 click text:"shoes"
 waitfor 2 , {text:"Display",SearchRectangle:[641,556,1153,620]} --waits upto 2 seconds until the text was found in the given searchreactangle.
+
+
+//waitforall will waitfor all the parameters are found.
+
+
+WaitForAll 10,[ NopCommerce_logo.png, text:"Testing"]
+
